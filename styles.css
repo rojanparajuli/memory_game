@@ -1,93 +1,109 @@
+/* styles.css */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
+  font-family: 'Arial', sans-serif;
 }
 
 body {
+  background-color: #f0f0f5;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f0f0f0;
 }
 
 .game-container {
+  width: 90%;
+  max-width: 800px;
   text-align: center;
+  padding: 20px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-.header {
-  margin-bottom: 20px;
-}
-
-h1 {
+.header h1 {
   font-size: 2.5rem;
   color: #333;
-}
-
-.restart-button {
-  padding: 10px 20px;
-  font-size: 1rem;
-  cursor: pointer;
-  border: none;
-  background-color: #4CAF50;
-  color: white;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-  /* margin-bottom: 30px;
-  margin-top: 30px; */
-  margin: 30px;
-}
-
-.restart-button:hover {
-  background-color: #45a049;
+  margin-bottom: 20px;
 }
 
 .game-grid {
   display: grid;
-  grid-template-columns: repeat(4, 100px);
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   gap: 15px;
-  justify-content: center;
+  justify-items: center;
+  margin-bottom: 20px;
 }
 
 .card {
   width: 100px;
   height: 100px;
   perspective: 1000px;
-  cursor: pointer;
 }
 
 .card-inner {
+  position: relative;
   width: 100%;
   height: 100%;
   transition: transform 0.6s;
   transform-style: preserve-3d;
-  position: relative;
+  cursor: pointer;
 }
 
 .card.flip .card-inner {
   transform: rotateY(180deg);
 }
 
-.card-front,
-.card-back {
+.card-front, .card-back {
+  position: absolute;
   width: 100%;
   height: 100%;
-  position: absolute;
   backface-visibility: hidden;
   border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 2rem;
+  color: #fff;
 }
 
 .card-front {
-  background-color: #bbb;
+  background-color: #bbbfc2;
 }
 
 .card-back {
-  background-color: #fff;
+  background-color: #2ecc71;
   transform: rotateY(180deg);
+}
+
+.restart-button {
+  padding: 10px 20px;
+  background-color: #0ea632;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.restart-button:hover {
+  background-color: #0f9dde;
+}
+
+@media (max-width: 600px) {
+  .header h1 {
+      font-size: 2rem;
+  }
+
+  .card {
+      width: 80px;
+      height: 80px;
+  }
+
+  .restart-button {
+      padding: 8px 16px;
+  }
 }

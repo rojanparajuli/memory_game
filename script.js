@@ -1,6 +1,6 @@
 const gameGrid = document.querySelector('.game-grid');
 const restartButton = document.querySelector('.restart-button');
-const icons = ['🐶', '🐱', '🐭', '🐹', '🐰', '🦊', '🐻', '🐼'];
+const icons = ['🐶', '🐱', '🐭', '🐹', '🐰', '🦊', '🐻', '🐼', '🦁', '🐯', '🦌', '🦆'];
 let cardValues = [...icons, ...icons];
 let firstCard, secondCard;
 let lockBoard = false;
@@ -67,6 +67,7 @@ function disableCards() {
     secondCard.removeEventListener('click', flipCard);
     resetBoard();
     matches++;
+    console.log("disable cards")
 }
 
 function endGame() {
@@ -93,7 +94,7 @@ restartButton.addEventListener('click', () => {
     matches = 0;
     correctGuesses = 0;
     clearTimeout(timeoutID);
-    createBoard();
+    resetBoard(); // Reset board variables including lockBoard
+    createBoard(); // Recreate the game board
 });
 
-createBoard();
